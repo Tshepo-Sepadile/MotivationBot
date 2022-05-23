@@ -23,8 +23,8 @@ namespace MotivationBot
             {
                 string json = response.Content.ReadAsStringAsync().Result;
                 var quotes = JsonConvert.DeserializeObject<List<Quote>>(json);
-                var quote = quotes[RandomNumber(quotes.Count - 1)]; //The API returns a list of quotes, therefore we use a random number to get a random quote form the list.
-                string message = @$"""{quote.Text}"" - { (string.IsNullOrEmpty(quote.Author) ? "Anon" : quote.Author) } #Motivation";
+                var quote = quotes[RandomNumber(quotes.Count - 1)]; //The API returns a list of quotes, therefore we use a random number to get a random quote from the list.
+                string message = @$"""{quote.Text}"" - { (string.IsNullOrEmpty(quote.Author) ? "Anon" : quote.Author) } { Hashtags() }";
                 return message;
             }
             else
@@ -36,6 +36,11 @@ namespace MotivationBot
         {
             Random random = new Random();
             return random.Next(0, maxValue);
+        }
+
+        private string Hashtags()
+        {
+            return string.IsNullOrEmpty(ConfigurationManager.AppSettings["Hashtags"]) ? "" : string.Join(" ", ConfigurationManager.AppSettings["Hashtags"].Split('@'));
         }
     }
 }
