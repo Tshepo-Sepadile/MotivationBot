@@ -5,6 +5,7 @@
 	<add key="TwitterApiKeySecret" value="YOUR_TWITTER_API_KEY_SECRET_HERE"/>
 	<add key="TwitterAccessToken" value="YOUR_TWITTER_ACCESS_TOKEN_HERE"/>
 	<add key="TwitterAccessTokenSecret" value="YOUR_TWITTER_ACCESS_TOKEN_SECRET_HERE"/>
-	<add key="QuotesApiUrl" value="https://type.fit/api/quotes"/>
+	<add key="QuotesApiUrl" value="https://zenquotes.io/api/random"/>
+	<add key="Hashtags" value="#Hello@#World"/>
   </appSettings>
 </configuration>
