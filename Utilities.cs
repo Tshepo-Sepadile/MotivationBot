@@ -27,13 +27,25 @@ namespace MotivationBot
             catch (Exception ex)
             {
                 Console.WriteLine(ExceptionMessage(ex));
-                Console.ReadKey();
             }
         }
 
         public static string ExceptionMessage(Exception ex)
         {
             return $"Oops! Something went wrong...\n\nError: {ex.Message}\n\nInnerException: {ex.InnerException}\n\nStackTrace: {ex.StackTrace}";
+        }
+
+        public static string BuildString(char symbol, List<string> items)
+        {
+            try
+            {
+                return string.Join(symbol, items);
+            }
+            catch (Exception ex)
+            {
+                MessageLog(ExceptionMessage(ex));
+                return string.Empty;
+            }
         }
     }
 }
