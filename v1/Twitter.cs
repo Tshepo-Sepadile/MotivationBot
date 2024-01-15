@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Tweetinvi;
 using Tweetinvi.Models;
 
-namespace MotivationBot
+namespace MotivationBot.v1
 {
     public class Twitter
     {
@@ -36,7 +36,7 @@ namespace MotivationBot
                     Utilities.MessageLog("Tweet not posted. Message is null or empty.");
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Utilities.MessageLog(Utilities.ExceptionMessage(ex));
             }
