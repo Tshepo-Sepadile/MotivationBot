@@ -19,12 +19,13 @@ namespace MotivationBot.v2.Quotes
             try
             {
                 var response = await _httpClient.GetAsync(_url);
-                return await response.Content.ReadAsStringAsync();
+                if(response.IsSuccessStatusCode)
+                    return await response.Content.ReadAsStringAsync();
+                throw new Exception(await response.Content.ReadAsStringAsync());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Utilities.MessageLog(Utilities.ExceptionMessage(ex));
-                return string.Empty;
+                throw;
             }
         }
     }

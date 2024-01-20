@@ -25,9 +25,9 @@ namespace MotivationBot.v2.Twitter
                 var response = await _client.PostAsync(_request);
                 Utilities.MessageLog(response.Content);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Utilities.MessageLog(Utilities.ExceptionMessage(ex));
+                throw;
             }
         }
     }

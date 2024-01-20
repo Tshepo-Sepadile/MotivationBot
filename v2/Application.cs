@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
 using MotivationBot.v2.Quotes;
@@ -24,11 +25,19 @@ namespace MotivationBot.v2
 
         public async Task Run()
         {
-            Utilities.MessageLog("Getting quote...");
-            string quotesAsString = await _quoteRequest.GetQuotesAsync();
-            List<ZenQuote> quotes = JsonSerializer.Deserialize<List<ZenQuote>>(quotesAsString);
-            Utilities.MessageLog("Posting tweet...");
-            await _twitterClient.PostAsync(_twitterUrl, $"{quotes[0]} {Utilities.BuildString(' ', _hashTags)}");
+            try
+            {
+                Utilities.MessageLog("Getting quote...");
+                string quotesAsString = await _quoteRequest.GetQuotesAsync();
+                Utilities.MessageLog(quotesAsString);
+                List<ZenQuote> quotes = JsonSerializer.Deserialize<List<ZenQuote>>(quotesAsString);
+                Utilities.MessageLog("Posting tweet...");
+                await _twitterClient.PostAsync(_twitterUrl, $"{quotes[0]} {Utilities.BuildString(' ', _hashTags)}");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
