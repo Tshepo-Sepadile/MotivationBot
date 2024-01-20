@@ -351,3 +351,6 @@ MigrationBackup/
 
 #Removing the app config because it contains api keys
 App.config
+
+# Debug classes
+debug_*
