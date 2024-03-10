@@ -27,7 +27,7 @@ namespace MotivationBot
                 string tokenSecret = ConfigurationManager.AppSettings["TwitterAccessTokenSecret"];
                 string twitterUrl = ConfigurationManager.AppSettings["TwitterUrl"];
                 List<string> hashTags = ConfigurationManager.AppSettings["Hashtags"].Split('@').ToList();
-                string quotesUrl = ConfigurationManager.AppSettings["QuotesApiUrl."];
+                string quotesUrl = ConfigurationManager.AppSettings["QuotesApiUrl"];
 
 #if VERSION_1
             //Utilities.MessageLog("Running version 1...");
