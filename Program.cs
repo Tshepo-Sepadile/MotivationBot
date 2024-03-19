@@ -44,15 +44,14 @@ namespace MotivationBot
                 Application application = new(new QuoteClient(new HttpClient(), quotesUrl),
                 new TwitterClient(authorization.Client, authorization.Request), twitterUrl, hashTags);
                 await application.Run();
-#endif
-                Utilities.MessageLog("Application Exiting...");
+#endif             
             }
             catch (Exception ex)
             {
                 Utilities.MessageLog(Utilities.ExceptionMessage(ex));
             }
+            Utilities.MessageLog("Application Exiting...");
             Environment.Exit(0);
-
         }
     }
 }
