@@ -9,25 +9,16 @@ namespace MotivationBot
     {
         public static void MessageLog(string message)
         {
-            try
-            {
-                string directoryPath = @$"{AppDomain.CurrentDomain.BaseDirectory}\Files\{DateTime.Now.Year}\{DateTime.Now.ToString("MMMM")}";
+            string directoryPath = @$"{AppDomain.CurrentDomain.BaseDirectory}\Files\{DateTime.Now.Year}\{DateTime.Now:MMMM}";
                
-                if (!Directory.Exists(directoryPath))
-                    Directory.CreateDirectory(directoryPath);
+            if (!Directory.Exists(directoryPath))
+                Directory.CreateDirectory(directoryPath);
 
-                string filePath = Path.Combine(directoryPath, $"Log_{ DateTime.Now.ToString("dd-MM-yyyy")}.txt");
-                Console.WriteLine(filePath);
-                using (StreamWriter sw = new StreamWriter(filePath, true))
-                {
-                    sw.WriteLine($"{DateTime.Now}: {message}");
-                    sw.Flush();
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ExceptionMessage(ex));
-            }
+            string filePath = Path.Combine(directoryPath, $"Log_{ DateTime.Now:dd-MM-yyyy}.txt");
+            Console.WriteLine(filePath);
+            using StreamWriter sw = new(filePath, true);
+            sw.WriteLine($"{DateTime.Now}: {message}");
+            sw.Flush();
         }
 
         public static string ExceptionMessage(Exception ex)
@@ -37,15 +28,7 @@ namespace MotivationBot
 
         public static string BuildString(char symbol, List<string> items)
         {
-            try
-            {
-                return string.Join(symbol, items);
-            }
-            catch (Exception ex)
-            {
-                MessageLog(ExceptionMessage(ex));
-                return string.Empty;
-            }
+            return string.Join(symbol, items);
         }
     }
 }

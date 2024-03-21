@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MotivationBot.v2.Quotes
+namespace MotivationBot.Quotes
 {
     public interface IQuoteClient
     {

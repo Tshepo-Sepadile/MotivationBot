@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using MotivationBot.v2.Quotes;
-using MotivationBot.v2.Twitter;
+using MotivationBot.Quotes;
+using MotivationBot.Twitter;
 
-namespace MotivationBot.v2
+namespace MotivationBot
 {
     public class Application
     {
@@ -15,7 +14,7 @@ namespace MotivationBot.v2
         private readonly List<string> _hashTags;
 
         public Application(IQuoteClient quoteRequest, ITwitterClient twitterClient,
-            string twitterUrl, List<string> hashTags) 
+            string twitterUrl, List<string> hashTags)
         {
             _quoteRequest = quoteRequest;
             _twitterClient = twitterClient;

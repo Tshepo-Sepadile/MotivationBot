@@ -1,8 +1,7 @@
-﻿using System;
-using RestSharp;
+﻿using RestSharp;
 using System.Threading.Tasks;
 
-namespace MotivationBot.v2.Twitter
+namespace MotivationBot.Twitter
 {
     public class TwitterClient : ITwitterClient
     {
@@ -21,7 +20,7 @@ namespace MotivationBot.v2.Twitter
             _request.Method = Method.Post;
             _request.AddJsonBody(new { text });
             var response = await _client.PostAsync(_request);
-            if(!response.IsSuccessful)
+            if (!response.IsSuccessful)
                 Utilities.MessageLog(response.Content);
         }
     }

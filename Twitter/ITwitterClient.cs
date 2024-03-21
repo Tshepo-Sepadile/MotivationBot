@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace MotivationBot.v2.Twitter
+namespace MotivationBot.Twitter
 {
     public interface ITwitterClient
     {
