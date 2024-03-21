@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MotivationBot.Quotes;
 using MotivationBot.Twitter;
+using Microsoft.Extensions.Configuration;
 
 namespace MotivationBot
 {
@@ -18,13 +19,14 @@ namespace MotivationBot
             Utilities.MessageLog("Application starting...");
             try
             {
-                string oauthConsumerKey = ConfigurationManager.AppSettings["TwitterApiKey"];
-                string consumerSecret = ConfigurationManager.AppSettings["TwitterApiKeySecret"];
-                string oauthToken = ConfigurationManager.AppSettings["TwitterAccessToken"];
-                string tokenSecret = ConfigurationManager.AppSettings["TwitterAccessTokenSecret"];
-                string twitterUrl = ConfigurationManager.AppSettings["TwitterUrl"];
-                List<string> hashTags = ConfigurationManager.AppSettings["Hashtags"].Split('@').ToList();
-                string quotesUrl = ConfigurationManager.AppSettings["QuotesApiUrl"];
+                IConfigurationRoot configurationRoot = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+                string oauthConsumerKey = configurationRoot["TwitterApiKey"];
+                string consumerSecret = configurationRoot["TwitterApiKeySecret"];
+                string oauthToken = configurationRoot["TwitterAccessToken"];
+                string tokenSecret = configurationRoot["TwitterAccessTokenSecret"];
+                string twitterUrl = configurationRoot["TwitterUrl"];
+                var hashTags = configurationRoot["Hashtags"].Split('@');
+                string quotesUrl = configurationRoot["QuotesApiUrl"];
 
                 RestClient restClient = new (new RestClientOptions(new Uri(twitterUrl))
                 {
