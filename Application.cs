@@ -11,10 +11,10 @@ namespace MotivationBot
         private readonly IQuoteClient _quoteRequest;
         private readonly ITwitterClient _twitterClient;
         private readonly string _twitterUrl;
-        private readonly List<string> _hashTags;
+        private readonly IEnumerable<string> _hashTags;
 
         public Application(IQuoteClient quoteRequest, ITwitterClient twitterClient,
-            string twitterUrl, List<string> hashTags)
+            string twitterUrl, IEnumerable<string> hashTags)
         {
             _quoteRequest = quoteRequest;
             _twitterClient = twitterClient;

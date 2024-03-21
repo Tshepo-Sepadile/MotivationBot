@@ -26,7 +26,7 @@ namespace MotivationBot
             return $"Oops! Something went wrong...\n\nError: {ex.Message}\n\nInnerException: {ex.InnerException}\n\nStackTrace: {ex.StackTrace}";
         }
 
-        public static string BuildString(char symbol, List<string> items)
+        public static string BuildString(char symbol, IEnumerable<string> items)
         {
             return string.Join(symbol, items);
         }
