@@ -349,8 +349,8 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
-#Removing the app config because it contains api keys
-App.config
+#Ignore appsettings
+appsettings.json
 
 # Debug classes
 debug_*
