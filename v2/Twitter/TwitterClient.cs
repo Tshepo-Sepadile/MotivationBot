@@ -17,18 +17,12 @@ namespace MotivationBot.v2.Twitter
 
         public async Task PostAsync(string url, string text)
         {
-            try
-            {
-                _request.AddUrlSegment("url", url);
-                _request.Method = Method.Post;
-                _request.AddJsonBody(new { text });
-                var response = await _client.PostAsync(_request);
+            _request.AddUrlSegment("url", url);
+            _request.Method = Method.Post;
+            _request.AddJsonBody(new { text });
+            var response = await _client.PostAsync(_request);
+            if(!response.IsSuccessful)
                 Utilities.MessageLog(response.Content);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
     }
 }
