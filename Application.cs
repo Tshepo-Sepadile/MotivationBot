@@ -6,21 +6,13 @@ using MotivationBot.Twitter;
 
 namespace MotivationBot
 {
-    public class Application
+    public class Application(IQuoteClient quoteRequest, ITwitterClient twitterClient,
+        string twitterUrl, IEnumerable<string> hashTags)
     {
-        private readonly IQuoteClient _quoteRequest;
-        private readonly ITwitterClient _twitterClient;
-        private readonly string _twitterUrl;
-        private readonly IEnumerable<string> _hashTags;
-
-        public Application(IQuoteClient quoteRequest, ITwitterClient twitterClient,
-            string twitterUrl, IEnumerable<string> hashTags)
-        {
-            _quoteRequest = quoteRequest;
-            _twitterClient = twitterClient;
-            _twitterUrl = twitterUrl;
-            _hashTags = hashTags;
-        }
+        private readonly IQuoteClient _quoteRequest = quoteRequest;
+        private readonly ITwitterClient _twitterClient = twitterClient;
+        private readonly string _twitterUrl = twitterUrl;
+        private readonly IEnumerable<string> _hashTags = hashTags;
 
         public async Task Run()
         {
