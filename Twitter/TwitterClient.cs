@@ -3,14 +3,9 @@ using System.Threading.Tasks;
 
 namespace MotivationBot.Twitter
 {
-    public class TwitterClient : ITwitterClient
+    public class TwitterClient(RestClient client) : ITwitterClient
     {
-        private readonly RestClient _client;
-
-        public TwitterClient(RestClient client)
-        {
-            _client = client;
-        }
+        private readonly RestClient _client = client;
 
         public async Task PostAsync(string url, string text)
         {
