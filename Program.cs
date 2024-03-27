@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Configuration;
 using System.Threading.Tasks;
 using RestSharp.Authenticators;
 using RestSharp;
 using System.Net.Http;
-using System.Collections.Generic;
-using System.Linq;
 using MotivationBot.Quotes;
 using MotivationBot.Twitter;
 using Microsoft.Extensions.Configuration;
