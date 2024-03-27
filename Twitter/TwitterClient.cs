@@ -5,21 +5,17 @@ namespace MotivationBot.Twitter
 {
     public class TwitterClient : ITwitterClient
     {
-        private readonly RestRequest _request;
         private readonly RestClient _client;
 
-        public TwitterClient(RestClient client, RestRequest request)
+        public TwitterClient(RestClient client)
         {
             _client = client;
-            _request = request;
         }
 
         public async Task PostAsync(string url, string text)
         {
-            _request.AddUrlSegment("url", url);
-            _request.Method = Method.Post;
-            _request.AddJsonBody(new { text });
-            var response = await _client.PostAsync(_request);
+            var request = new RestRequest(url, Method.Post).AddJsonBody(new { text });
+            var response = await _client.PostAsync(request);
             if (!response.IsSuccessful)
                 Utilities.MessageLog(response.Content);
         }

@@ -34,7 +34,7 @@ namespace MotivationBot
                     .ForAccessToken(oauthConsumerKey, consumerSecret, oauthToken, tokenSecret)
                 });
                 Application application = new(new QuoteClient(new HttpClient(), quotesUrl),
-                new TwitterClient(restClient, new RestRequest()), twitterUrl, hashTags);
+                new TwitterClient(restClient), twitterUrl, hashTags);
                 await application.Run();
             }
             catch (Exception ex)
