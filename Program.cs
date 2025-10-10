@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace MotivationBot
 {
-    class Program
+    static class Program
     {
         static async Task Main(string[] args)
         {
